@@ -120,7 +120,9 @@ VOLUME ["/var/log/nginx"]
 ADD start.sh /start.sh
 
 ADD https://phar.phpunit.de/phpunit.phar /usr/local/bin/
-RUN chmod +x /usr/local/bin/phpunit.phar && phpunit.phar --version
+RUN chmod +x /usr/local/bin/phpunit.phar 
+RUN mv /usr/local/bin/phpunit.phar /usr/local/bin/phpunit 
+RUN phpunit --version
 
 CMD ["/bin/sh", "/start.sh"]
 
